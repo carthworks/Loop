@@ -10,6 +10,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Checkbox } from "@/components/ui/checkbox"
 import { MessageCircle, Eye, EyeOff, ArrowLeft, Shield, Users, Building } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { AuthGuard } from "@/components/auth-guard"
 
 // Sample user data for demonstration
 const sampleUsers = [
@@ -36,7 +37,7 @@ const sampleUsers = [
   }
 ]
 
-export default function LoginPage() {
+function LoginContent() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
@@ -234,5 +235,13 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function LoginPage() {
+  return (
+    <AuthGuard requireAuth={false}>
+      <LoginContent />
+    </AuthGuard>
   )
 }

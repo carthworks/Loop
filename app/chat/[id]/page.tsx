@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { MessageBubble } from "@/components/message-bubble"
+import { AuthGuard } from "@/components/auth-guard"
 
 interface Message {
   id: string
@@ -74,7 +75,7 @@ const mockMessages: Message[] = [
   },
 ]
 
-export default function ChatScreen() {
+function ChatScreen() {
   const params = useParams()
   const router = useRouter()
   const [messages, setMessages] = useState<Message[]>(mockMessages)
@@ -240,5 +241,13 @@ export default function ChatScreen() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function ChatPage() {
+  return (
+    <AuthGuard>
+      <ChatScreen />
+    </AuthGuard>
   )
 }

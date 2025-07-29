@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { MessageCircle, Users, Phone, Video, Shield, Zap, Globe } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { AuthGuard } from "@/components/auth-guard"
 
 // Sample company data
 const companyStats = {
@@ -49,7 +50,7 @@ const features = [
   }
 ]
 
-export default function WelcomePage() {
+function WelcomeContent() {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
 
@@ -182,5 +183,13 @@ export default function WelcomePage() {
         </div>
       </footer>
     </div>
+  )
+}
+
+export default function WelcomePage() {
+  return (
+    <AuthGuard requireAuth={false}>
+      <WelcomeContent />
+    </AuthGuard>
   )
 }
