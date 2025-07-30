@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntraChat – Internal Private Chat & Calling App</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- IntraChat – Internal Team Messaging App
+IntraChat is a modern, secure, and private real-time chat and calling application, built to improve internal communication among company employees.
+Inspired by familiar messaging apps like WhatsApp, but designed specifically for internal, enterprise use. -->
+    <meta name="description" content="IntraChat is a modern, secure, and private real-time chat and calling application, built to improve internal communication among company employees.">
+    <meta name="keywords" content="IntraChat, internal chat, team messaging, private communication, enterprise chat, secure messaging, real-time chat, calling app, company communication, employee chat, internal messaging, team collaboration, secure chat, private chat, enterprise messaging, real-time communication, team chat, internal communication, company chat, employee messaging, team collaboration, secure chat, private chat, enterprise messaging, real-time communication, team chat, internal communication, company chat, employee
+    ">
+    <meta name="author" content="IntraChat">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        .hero-section {
+            background: var(--primary-gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff08" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-custom {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary-custom {
+            background: var(--secondary-gradient);
+            color: white;
+        }
+
+        .btn-outline-custom {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: none;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .carousel-item img {
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .pain-point-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .pain-point-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            height: 100%;
+        }
+
+        .solution-card {
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            height: 100%;
+        }
+
+        .contact-section {
+            background: var(--dark-gradient);
+            color: white;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .form-control {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 10px;
+            color: white;
+            padding: 12px 15px;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .form-control:focus {
+            background: rgba(255,255,255,0.15);
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+            color: white;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            border-radius: 50px;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .screenshot-gallery img {
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .screenshot-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--secondary-gradient);
+            border-radius: 2px;
+        }
+
+        /* Device Frame Base Styles */
+        .device-frame {
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .device-frame.active {
+            display: block;
+        }
+
+        .device-screen {
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .demo-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .device-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        /* iPhone Frame */
+        .iphone-frame {
+            width: 300px;
+            height: 600px;
+            background: #000;
+            border-radius: 30px;
+            padding: 8px;
+        }
+
+        .iphone-frame .device-screen {
+            border-radius: 22px;
+        }
+
+        .iphone-frame .demo-iframe {
+            border-radius: 22px;
+        }
+
+        .iphone-frame .device-border {
+            border: 2px solid #333;
+            border-radius: 30px;
+        }
+
+        .iphone-notch {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background: #000;
+            border-radius: 0 0 15px 15px;
+            z-index: 10;
+        }
+
+        .iphone-home-indicator {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: #666;
+            border-radius: 2px;
+            z-index: 10;
+        }
+
+        /* Android Frame */
+        .android-frame {
+            width: 280px;
+            height: 580px;
+            background: #2c2c2c;
+            border-radius: 25px;
+            padding: 6px;
+        }
+
+        .android-frame .device-screen {
+            border-radius: 19px;
+        }
+
+        .android-frame .demo-iframe {
+            border-radius: 19px;
+        }
+
+        .android-frame .device-border {
+            border: 1px solid #444;
+            border-radius: 25px;
+        }
+
+        .android-camera {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: #333;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .android-speaker {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-left: 25px;
+            width: 40px;
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+            z-index: 10;
+        }
+
+        .android-nav-bar {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 30px;
+            z-index: 10;
+        }
+
+        .android-nav-bar .nav-button {
+            width: 12px;
+            height: 12px;
+            background: #666;
+            border-radius: 2px;
+        }
+
+        .android-nav-bar .nav-button:nth-child(2) {
+            border-radius: 50%;
+        }
+
+        /* Tablet Frame */
+        .tablet-frame {
+            width: 500px;
+            height: 650px;
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 15px;
+        }
+
+        .tablet-frame .device-screen {
+            border-radius: 8px;
+        }
+
+        .tablet-frame .demo-iframe {
+            border-radius: 8px;
+        }
+
+        .tablet-frame .device-border {
+            border: 2px solid #333;
+            border-radius: 20px;
+        }
+
+        .tablet-home-button {
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: #2c2c2c;
+            border: 3px solid #444;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        /* Device Selector */
+        .device-selector {
+            display: flex;
+            gap: 8px;
+        }
+
+        .device-btn {
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            transition: all 0.3s ease;
+        }
+
+        .device-btn.active {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        .modal-lg {
+            max-width: 600px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 80vh;
+            }
+
+            .btn-custom {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+
+            .iphone-frame {
+                width: 250px;
+                height: 500px;
+            }
+
+            .iphone-notch {
+                width: 100px;
+                height: 20px;
+            }
+
+            .iphone-home-indicator {
+                width: 100px;
+            }
+
+            .android-frame {
+                width: 230px;
+                height: 480px;
+            }
+
+            .tablet-frame {
+                width: 350px;
+                height: 450px;
+            }
+
+            .device-selector {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .device-btn {
+                font-size: 0.7rem;
+                padding: 3px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: rgba(0,0,0,0.1); backdrop-filter: blur(10px);">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="#">
+                <i class="bi bi-chat-dots-fill me-2"></i>IntraChat
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#demo">Demo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#screenshots">Screenshots</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="display-3 fw-bold text-white mb-4">
+                            IntraChat
+                            <span class="d-block fs-2 fw-normal">Internal Private Communication</span>
+                        </h1>
+                        <p class="lead text-white-50 mb-5">
+                            A modern, secure, private chat & calling app built specifically for your company.
+                            Keep your team connected with enterprise-grade security and beautiful design.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <button type="button" class="btn btn-primary-custom btn-custom" data-bs-toggle="modal" data-bs-target="#demoModal">
+                                <i class="bi bi-play-circle me-2"></i>View Live Demo
+                            </button>
+                            <!-- <a href="https://github.com/carthworks/Loop" target="_blank" class="btn btn-warning btn-custom">
+                                <i class="bi bi-play-circle me-2"></i>Github
+                            </a> -->
+                            <!-- <a href="#contact" class="btn btn-outline-custom btn-custom">
+                                <i class="bi bi-envelope me-2"></i>Get Started
+                            </a> -->
+                            <a href="https://wa.me/919486772206" target="_blank" class="whatsapp-btn">
+                                <i class="bi bi-whatsapp"></i>WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <img src="assets/img/slide_all.jpeg"
+                             alt="IntraChat Preview" class="img-fluid rounded-4 shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Modal -->
+    <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark border-0">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title text-white" id="demoModalLabel">
+                        <i class="bi bi-phone me-2"></i>IntraChat Live Demo
+                    </h5>
+                    <div class="device-selector">
+                        <button type="button" class="btn btn-outline-light btn-sm device-btn active" data-device="iphone">
+                            <i class="bi bi-phone me-1"></i>iPhone
+                        </button>
+                        <button type="button" class="btn btn-outline-light btn-sm device-btn" data-device="android">
+                            <i class="bi bi-phone me-1"></i>Android
+                        </button>
+                        <button type="button" class="btn btn-outline-light btn-sm device-btn" data-device="tablet">
+                            <i class="bi bi-tablet me-1"></i>Tablet
+                        </button>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="demo-container d-flex justify-content-center align-items-center" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem;">
+
+                        <!-- iPhone Frame -->
+                        <div class="device-frame iphone-frame active" id="iphone-frame">
+                            <div class="device-screen">
+                                <iframe
+                                    src="https://loop-kappa-blond.vercel.app/"
+                                    frameborder="0"
+                                    class="demo-iframe"
+                                    title="IntraChat Demo - iPhone">
+                                </iframe>
+                            </div>
+                            <div class="device-border"></div>
+                            <div class="iphone-notch"></div>
+                            <div class="iphone-home-indicator"></div>
+                        </div>
+
+                        <!-- Android Frame -->
+                        <div class="device-frame android-frame" id="android-frame">
+                            <div class="device-screen">
+                                <iframe
+                                    src="https://loop-kappa-blond.vercel.app/"
+                                    frameborder="0"
+                                    class="demo-iframe"
+                                    title="IntraChat Demo - Android">
+                                </iframe>
+                            </div>
+                            <div class="device-border"></div>
+                            <div class="android-camera"></div>
+                            <div class="android-speaker"></div>
+                            <div class="android-nav-bar">
+                                <div class="nav-button"></div>
+                                <div class="nav-button"></div>
+                                <div class="nav-button"></div>
+                            </div>
+                        </div>
+
+                        <!-- Tablet Frame -->
+                        <div class="device-frame tablet-frame" id="tablet-frame">
+                            <div class="device-screen">
+                                <iframe
+                                    src="https://loop-kappa-blond.vercel.app/"
+                                    frameborder="0"
+                                    class="demo-iframe"
+                                    title="IntraChat Demo - Tablet">
+                                </iframe>
+                            </div>
+                            <div class="device-border"></div>
+                            <div class="tablet-home-button"></div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer border-0 bg-dark">
+                    <div class="w-100 text-center">
+                        <p class="text-white-50 mb-2">Experience IntraChat on mobile</p>
+                        <a href="https://loop-kappa-blond.vercel.app/" target="_blank" class="btn btn-outline-light btn-sm">
+                            <i class="bi bi-box-arrow-up-right me-1"></i>Open in New Tab
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold section-title">Why Choose IntraChat?</h2>
+                <p class="lead text-muted">Powerful features designed for modern teams</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="bi bi-shield-lock"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Enterprise Security</h4>
+                        <p class="text-muted">End-to-end encryption, self-hosted options, and complete data control for your organization.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="bi bi-camera-video"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">HD Video Calls</h4>
+                        <p class="text-muted">Crystal clear video conferencing with screen sharing and recording capabilities.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Team Management</h4>
+                        <p class="text-muted">Built-in employee directory, team channels, and advanced user management.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Slideshow Section -->
+    <section id="demo" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold section-title">See IntraChat in Action</h2>
+                <p class="lead text-muted">Experience the power of modern team communication</p>
+                <button type="button" class="btn btn-primary-custom btn-custom mt-3" data-bs-toggle="modal" data-bs-target="#demoModal">
+                    <i class="bi bi-phone me-2"></i>Try Mobile Demo
+                </button>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div id="demoCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#demoCarousel" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#demoCarousel" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#demoCarousel" data-bs-slide-to="2"></button>
+                            <button type="button" data-bs-target="#demoCarousel" data-bs-slide-to="3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                              <img src="assets/img/login.jpeg"
+                                     class="d-block img-fluid" alt="Chat Interface">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5 class="fw-bold">Modern Chat Interface</h5>
+                                    <p>Clean, intuitive design with real-time messaging</p>
+                                </div>
+                            </div>
+                            <!-- <div class="carousel-item">
+                                <img src="https://via.placeholder.com/1000x600/764ba2/ffffff?text=Video+Call+Demo"
+                                     class="d-block w-100" alt="Video Call">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5 class="fw-bold">HD Video Conferencing</h5>
+                                    <p>Crystal clear video calls with screen sharing</p>
+                                </div>
+                            </div> -->
+                            <div class="carousel-item">
+                                <img src="assets/img/settings.jpeg"
+                                     class="d-block ww-100 img-fluid" alt="Team Directory">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5 class="fw-bold">Employee Directory</h5>
+                                    <p>Easy team management and contact organization</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/img/welcome.jpeg"
+                                     class="d-block ww-100 img-fluid" alt="Admin Panel">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5 class="fw-bold">Admin Dashboard</h5>
+                                    <p>Comprehensive control panel for administrators</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#demoCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#demoCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points & Solutions Section -->
+    <section class="pain-point-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold section-title">Problems We Solve</h2>
+                <p class="lead text-muted">Transform your team communication challenges into competitive advantages</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="pain-point-card">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-danger rounded-circle p-3 me-3">
+                                <i class="bi bi-exclamation-triangle text-white fs-4"></i>
+                            </div>
+                            <h3 class="fw-bold text-danger mb-0">Current Pain Points</h3>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li class="mb-3 d-flex align-items-start">
+                                <i class="bi bi-x-circle text-danger me-3 mt-1"></i>
+                                <div>
+                                    <strong>Data Security Risks</strong><br>
+                                    <small class="text-muted">Using public chat apps exposes sensitive company data</small>
+                                </div>
+                            </li>
+                            <li class="mb-3 d-flex align-items-start">
+                                <i class="bi bi-x-circle text-danger me-3 mt-1"></i>
+                                <div>
+                                    <strong>Poor Team Coordination</strong><br>
+                                    <small class="text-muted">Scattered communication across multiple platforms</small>
+                                </div>
+                            </li>
+                            <li class="mb-3 d-flex align-items-start">
+                                <i class="bi bi-x-circle text-danger me-3 mt-1"></i>
+                                <div>
+                                    <strong>No Brand Control</strong><br>
+                                    <small class="text-muted">Generic tools that don't reflect your company identity</small>
+                                </div>
+                            </li>
+                            <li class="mb-3 d-flex align-items-start">
+                                <i class="bi bi-x-circle text-danger me-3 mt-1"></i>
+                                <div>
+                                    <strong>Limited Customization</strong><br>
+                                    <small class="text-muted">One-size-fits-all solutions that don't meet specific needs</small>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="solution-card">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-light rounded-circle p-3 me-3">
+                                <i class="bi bi-check-circle text-success fs-4"></i>
+                            </div>
+                            <h3 class="fw-bold mb-0">IntraChat Solutions</h3>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li class="mb-3 d-flex align-items-start">
+                                <i class="bi bi-check-circle text-light me-3 mt-1"></i>
+                                <div>
+                                    <strong>Enterprise-Grade Security</strong><br>
+                                    <small class="text-white-50">Self-hosted or private cloud with end-to-end encryption</small>
+                                </div>
+                            </li>
+                            <li class="mb-3 d-flex align-items-start">
+                                <i class="bi bi-check-circle text-light me-3 mt-1"></i>
+                                <div>
+                                    <strong>Unified Communication Hub</strong><br>
+                                    <small class="text-white-50">Chat, video calls, file sharing, and directory in one place</small>
+                                </div>
+                            </li>
+                            <li class="mb-3 d-flex align-items-start">
+                                <i class="bi bi-check-circle text-light me-3 mt-1"></i>
+                                <div>
+                                    <strong>Custom Branding</strong><br>
+                                    <small class="text-white-50">Your logo, colors, and company identity throughout</small>
+                                </div>
+                            </li>
+                            <li class="mb-3 d-flex align-items-start">
+                                <i class="bi bi-check-circle text-light me-3 mt-1"></i>
+                                <div>
+                                    <strong>Tailored Features</strong><br>
+                                    <small class="text-white-50">Customizable to match your workflow and requirements</small>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Gallery Section -->
+    <section id="screenshots" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold section-title">Screenshots</h2>
+                <p class="lead text-muted">Modern, sleek interface designed for professional teams</p>
+            </div>
+            <div class="row g-4 screenshot-gallery">
+                <div class="col-lg-4 col-md-6">
+                    <div class="position-relative">
+                        <img src="assets/img/chat.jpeg"
+                             class="img-fluid w-100" alt="Chat Interface">
+                        <div class="position-absolute bottom-0 start-0 end-0 bg-dark bg-opacity-75 text-white p-3">
+                            <h6 class="mb-1">Real-time Messaging</h6>
+                            <small>Instant chat with typing indicators</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="position-relative">
+                        <img src="assets/img/groupcallTeam.jpeg"
+                             class="img-fluid w-100" alt="Video Call Interface">
+                        <div class="position-absolute bottom-0 start-0 end-0 bg-dark bg-opacity-75 text-white p-3">
+                            <h6 class="mb-1">HD Video Calls</h6>
+                            <small>Crystal clear video conferencing</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="position-relative">
+                        <img src="assets/img/innerpage-calls.jpeg"
+                             class="img-fluid w-100" alt="Employee Directory">
+                        <div class="position-absolute bottom-0 start-0 end-0 bg-dark bg-opacity-75 text-white p-3">
+                            <h6 class="mb-1">Team Directory</h6>
+                            <small>Easy contact management</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="position-relative">
+                        <img src="https://via.placeholder.com/400x300/f5576c/ffffff?text=File+Sharing"
+                             class="img-fluid w-100" alt="File Sharing">
+                        <div class="position-absolute bottom-0 start-0 end-0 bg-dark bg-opacity-75 text-white p-3">
+                            <h6 class="mb-1">Secure File Sharing</h6>
+                            <small>Share documents safely</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="position-relative">
+                        <img src="https://via.placeholder.com/400x300/36d1dc/ffffff?text=Admin+Panel"
+                             class="img-fluid w-100" alt="Admin Dashboard">
+                        <div class="position-absolute bottom-0 start-0 end-0 bg-dark bg-opacity-75 text-white p-3">
+                            <h6 class="mb-1">Admin Dashboard</h6>
+                            <small>Complete system control</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="position-relative">
+                        <img src="https://via.placeholder.com/400x300/5f27cd/ffffff?text=Mobile+App"
+                             class="img-fluid w-100" alt="Mobile Application">
+                        <div class="position-absolute bottom-0 start-0 end-0 bg-dark bg-opacity-75 text-white p-3">
+                            <h6 class="mb-1">Mobile Ready</h6>
+                            <small>Native mobile experience</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold text-white section-title">Get Started Today</h2>
+                <p class="lead text-white-50">Ready to transform your team communication? Let's talk!</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form">
+                        <div class="row mb-4">
+                            <div class="col-md-6 text-center mb-3">
+                                <div class="d-flex align-items-center justify-content-center mb-2">
+                                    <i class="bi bi-whatsapp fs-3 me-2"></i>
+                                    <h5 class="mb-0">WhatsApp</h5>
+                                </div>
+                                <a href="https://wa.me/919486772206" target="_blank" class="whatsapp-btn">
+                                    <i class="bi bi-whatsapp me-2"></i>+91 9486772206
+                                </a>
+                            </div>
+                            <div class="col-md-6 text-center mb-3">
+                                <div class="d-flex align-items-center justify-content-center mb-2">
+                                    <i class="bi bi-envelope fs-3 me-2"></i>
+                                    <h5 class="mb-0">Email</h5>
+                                </div>
+                                <a href="mailto:tkarthikeyan@gmail.com" class="text-white text-decoration-none">
+                                    tkarthikeyan@gmail.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <form id="contactForm" class="needs-validation" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                                    <div class="invalid-feedback">Please provide your name.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" placeholder="your@email.com" required>
+                                    <div class="invalid-feedback">Please provide a valid email.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="company" class="form-label">Company Name</label>
+                                    <input type="text" class="form-control" id="company" placeholder="Your Company">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone" placeholder="+91 XXXXX XXXXX">
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" rows="4"
+                                              placeholder="Tell us about your requirements..." required></textarea>
+                                    <div class="invalid-feedback">Please provide a message.</div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary-custom btn-custom w-100">
+                                        <i class="bi bi-send me-2"></i>Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-chat-dots-fill fs-4 me-2"></i>
+                        <span class="fw-bold">IntraChat</span>
+                    </div>
+                    <small class="text-muted">© 2025 IntraChat. All rights reserved.</small>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex justify-content-md-end gap-3">
+                        <a href="https://wa.me/919486772206" target="_blank" class="text-white">
+                            <i class="bi bi-whatsapp fs-5"></i>
+                        </a>
+                        <a href="mailto:tkarthikeyan@gmail.com" class="text-white">
+                            <i class="bi bi-envelope fs-5"></i>
+                        </a>
+                        <a href="https://github.com/carthworks/Loop" target="_blank" class="text-white">
+                            <i class="bi bi-github fs-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form validation and submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (this.checkValidity()) {
+                // Get form data
+                const formData = new FormData(this);
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const company = document.getElementById('company').value;
+                const phone = document.getElementById('phone').value;
+                const message = document.getElementById('message').value;
+
+                // Create WhatsApp message
+                const whatsappMessage = `Hello! I'm interested in IntraChat.%0A%0A` +
+                    `Name: ${name}%0A` +
+                    `Email: ${email}%0A` +
+                    `Company: ${company}%0A` +
+                    `Phone: ${phone}%0A%0A` +
+                    `Message: ${message}`;
+
+                // Open WhatsApp with pre-filled message
+                window.open(`https://wa.me/919486772206?text=${whatsappMessage}`, '_blank');
+
+                // Show success message
+                alert('Thank you! Your message has been prepared for WhatsApp. You can also email us directly at tkarthikeyan@gmail.com');
+
+                // Reset form
+                this.reset();
+                this.classList.remove('was-validated');
+            }
+
+            this.classList.add('was-validated');
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(0,0,0,0.9)';
+            } else {
+                navbar.style.background = 'rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Auto-advance carousel
+        const carousel = new bootstrap.Carousel(document.getElementById('demoCarousel'), {
+            interval: 4000,
+            wrap: true
+        });
+
+        // Device frame switching functionality
+        document.querySelectorAll('.device-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const deviceType = this.getAttribute('data-device');
+
+                // Remove active class from all buttons and frames
+                document.querySelectorAll('.device-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.device-frame').forEach(f => f.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding frame
+                this.classList.add('active');
+                document.getElementById(deviceType + '-frame').classList.add('active');
+
+                // Update modal title
+                const deviceNames = {
+                    'iphone': 'iPhone',
+                    'android': 'Android',
+                    'tablet': 'Tablet'
+                };
+                document.getElementById('demoModalLabel').innerHTML =
+                    `<i class="bi bi-${deviceType === 'tablet' ? 'tablet' : 'phone'} me-2"></i>IntraChat Demo - ${deviceNames[deviceType]}`;
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe feature cards and other elements
+        document.querySelectorAll('.feature-card, .pain-point-card, .solution-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
