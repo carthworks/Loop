@@ -65,6 +65,8 @@ function WelcomeContent() {
   const handleLearnMore = () => {
     // Scroll to features section
     document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
+    //https://intra-chat-eight.vercel.app/
+    window.open('https://intra-chat-eight.vercel.app/', '_blank')
   }
 
   return (
